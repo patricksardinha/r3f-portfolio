@@ -348,15 +348,6 @@ export function Room(props) {
           material={textureMaterial}
         />
       </group>
-      <group position={[-0.004, 2.641, -0.506]}>
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Ceiling_Fan.geometry}
-          material={textureMaterial}
-          position={[0, -0.089, 0]}
-        />
-      </group>
       <group position={[2.216, 0.934, -2.006]}>
         <mesh
           castShadow
@@ -369,15 +360,6 @@ export function Room(props) {
           receiveShadow
           geometry={nodes.White_board_Cube045_1_1.geometry}
           material={textureMaterial}
-        />
-      </group>
-      <group position={[-1.109, 0, -0.486]} rotation={[0, -0.918, 0]}>
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Telescope.geometry}
-          material={textureMaterial}
-          position={[-0.947, 0, -0.232]}
         />
       </group>
       <group position={[3.281, 0, -0.134]} rotation={[0, -0.193, 0]}>
@@ -503,29 +485,6 @@ export function Room(props) {
           material={textureMaterial}
         />
       </group>
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.Analog_Cock.geometry}
-        material={textureMaterial}
-        position={[0.373, 1.623, -1.975]}
-        rotation={[0, -Math.PI / 2, 0]}
-      />
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.UmbrellaPalmTree_mesh.geometry}
-        material={textureMaterial}
-        position={[3.132, 0.562, -1.67]}
-      />
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.CoffePlant_mehs.geometry}
-        material={textureMaterial}
-        position={[1.594, 0, -1.504]}
-        rotation={[0, 0.941, 0]}
-      />
       <group
         position={[2.747, 0.092, -1.559]}
         rotation={[-Math.PI, 0.986, -Math.PI]}
@@ -862,7 +821,7 @@ export function Room(props) {
         position={[-0.334, 0.918, -1.565]}
         rotation={[-Math.PI, 1.319, -Math.PI]}
       />
-      <group position={[3.58, 1.038, -1.992]} rotation={[0, -Math.PI / 2, 0]}>
+      <group position={[3.449, 1.038, -1.992]} rotation={[0, -Math.PI / 2, 0]}>
         <mesh
           castShadow
           receiveShadow
@@ -893,14 +852,6 @@ export function Room(props) {
         material={textureMaterial}
         position={[1.932, -0.475, -1.343]}
         rotation={[-0.098, -0.003, 0.027]}
-      />
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.Xbox_Controller.geometry}
-        material={textureMaterial}
-        position={[1.428, 0, -1.365]}
-        rotation={[0, 0.476, 0]}
       />
       <group
         position={[-0.934, 1.685, -1.992]}
@@ -1015,9 +966,71 @@ export function Room(props) {
       <mesh
         castShadow
         receiveShadow
-        geometry={nodes.Books.geometry}
+        geometry={nodes.CoffePlant_mehs001.geometry}
         material={textureMaterial}
-        position={[1.901, 0.299, -1.512]}
+        position={[1.549, 0, -1.57]}
+        rotation={[0, 0.713, 0]}
+        scale={0.091}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Xbox_Controller001.geometry}
+        material={textureMaterial}
+        position={[1.522, 0.041, -1.34]}
+        rotation={[0, 0.208, 0]}
+        scale={0.006}
+      />
+      <group
+        position={[-1.497, 0, -1.397]}
+        rotation={[0, -0.93, 0]}
+        scale={1.102}
+      >
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Telescope001.geometry}
+          material={textureMaterial}
+          position={[0.088, 0, 0.006]}
+          rotation={[0, 0.149, 0]}
+          scale={112.257}
+        />
+      </group>
+      <group position={[0, 2.403, -0.473]} scale={1.29}>
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Ceiling_Fan001.geometry}
+          material={textureMaterial}
+          scale={100}
+        />
+      </group>
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Analog_Cock001.geometry}
+        material={textureMaterial}
+        position={[0.376, 1.626, -1.973]}
+        rotation={[0, -Math.PI / 2, 0]}
+        scale={0.016}
+      />
+      <group position={[2.031, 0.372, -1.258]}>
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Books001.geometry}
+          material={textureMaterial}
+          position={[-0.128, -0.074, -0.257]}
+          scale={138.225}
+        />
+      </group>
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.UmbrellaPalmTree_mesh001.geometry}
+        material={textureMaterial}
+        position={[3.137, 0.563, -1.661]}
+        scale={0.059}
       />
     </group>
   );
