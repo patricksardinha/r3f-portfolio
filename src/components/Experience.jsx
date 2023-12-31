@@ -1,10 +1,12 @@
 import { ContactShadows, Environment, OrbitControls, Sky } from "@react-three/drei";
-import { Avatar } from "./Avatar";
 import { useControls } from "leva";
+import { motion } from "framer-motion-3d";
+import { Avatar } from "./Avatar";
 import { Room } from "./Room";
 
-export const Experience = () => {
+export const Experience = (props) => {
 
+  const { section } = props;
   const { animation } = useControls({
     animation: {
       value: "Typing",
@@ -15,9 +17,16 @@ export const Experience = () => {
   return (
     <>
     <ambientLight intensity={1} />
-      <group position={[1.5, 2, 3]} scale={[0.9, 0.9, 0.9]} rotation-y={-Math.PI / 4}>
+      <motion.group 
+        position={[1.5, 2, 3]} 
+        scale={[0.9, 0.9, 0.9]} 
+        rotation-y={-Math.PI / 4}
+        animate={{
+          y: section === 0 ? 0 : -1
+        }}
+      >
         <Room />
-      </group>
+      </motion.group>
       <Sky />
       <Environment preset="sunset" />
       <group position-y={-1}>
