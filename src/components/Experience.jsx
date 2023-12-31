@@ -14,7 +14,6 @@ export const Experience = () => {
 
   return (
     <>
-      <OrbitControls />
       <Room />
       <Sky />
       <Environment preset="sunset" />
