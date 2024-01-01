@@ -1,15 +1,22 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import * as THREE from 'three';
 import { useGLTF, useTexture } from "@react-three/drei";
+import { motion } from "framer-motion-3d";
+import { animate, useMotionValue } from "framer-motion";
+import { useFrame } from "@react-three/fiber";
 
 export function Room(props) {
+
+  const { section } = props;
   const { nodes, materials } = useGLTF("models/scene_room.glb");
   const texture = useTexture("textures/lightmap.jpg");
   texture.flipY = false;
   texture.encoding = THREE.sRGBEncoding;
 
   const textureMaterial = new THREE.MeshStandardMaterial({
-    map: texture
+    map: texture,
+    transparent: true,
+    opacity: 1
   })
 
   const textureGlassMaterial = new THREE.MeshStandardMaterial({
@@ -18,9 +25,29 @@ export function Room(props) {
     opacity: 0.3
   })
 
+  const textureOpacity = useMotionValue(0);
+  const glassTextureOpacity = useMotionValue(0);
+
+  useEffect(() => {
+    animate(textureOpacity, section === 0 ? 1 : 0);
+    animate(glassTextureOpacity, section === 0 ? 0.42 : 0);
+  }, [section]);
+
+  useFrame(() => {
+    textureMaterial.opacity = textureOpacity.get();
+    textureGlassMaterial.opacity = glassTextureOpacity.get();
+  });
+
   return (
     <group {...props} dispose={null}>
-      <group position={[-1.77, 0.219, -1.073]} rotation={[0, 1.158, 0]}>
+      <motion.group
+        scale={[0, 0, 0]}
+        animate={{
+          scale: section === 0 ? 1 : 0
+        }}
+        position={[-1.77, 0.219, -1.073]} 
+        rotation={[0, 1.158, 0]}
+      >
         <group position={[0.48, 0, 0.811]} rotation={[-Math.PI / 2, 0, 1.509]}>
           <mesh
             castShadow
@@ -41,12 +68,16 @@ export function Room(props) {
             material={textureMaterial}
           />
         </group>
-      </group>
+      </motion.group>
       <group
         position={[-0.009, 0, -1.931]}
         rotation={[-Math.PI, 1.567, -Math.PI]}
       >
-        <group
+        <motion.group
+          scale={[0, 0, 0]}
+          animate={{
+            scale: section === 0 ? 1 : 0
+          }}
           position={[-1.321, 0.697, 0.441]}
           rotation={[-Math.PI / 2, 0, 1.643]}
         >
@@ -74,7 +105,7 @@ export function Room(props) {
             geometry={nodes.Chair_4.geometry}
             material={textureMaterial}
           />
-        </group>
+        </motion.group>
         <mesh
           castShadow
           receiveShadow
