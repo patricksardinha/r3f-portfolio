@@ -1,19 +1,23 @@
-import { ContactShadows, Environment, OrbitControls, Sky } from "@react-three/drei";
+import { ContactShadows, Environment, useScroll, OrbitControls, Sky } from "@react-three/drei";
 import { useControls } from "leva";
 import { motion } from "framer-motion-3d";
 import { Avatar } from "./Avatar";
 import { Room } from "./Room";
 import { useFrame, useThree } from "@react-three/fiber";
 import { animate, useMotionValue } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import * as THREE from 'three';
 import { framerMotionConfig } from "../config";
 
 
 export const Experience = (props) => {
 
-  const { section, menuOpened } = props;
+  const { menuOpened } = props;
   const { viewport } = useThree();
+  const data = useScroll();
+
+  const [section, setSection] = useState(0);
+
   const { animation } = useControls({
     animation: {
       value: "Typing",
@@ -35,7 +39,23 @@ export const Experience = (props) => {
 
   const characterContainerAboutRef = useRef();
 
+  const [characterAnimation, setCharacterAnimation] = useState("Typing");
+
+  useEffect(() => {
+    setCharacterAnimation("FallingIdle");
+    setTimeout(() => {
+      setCharacterAnimation(section === 0 ? "Typing" : "StandingIdle");
+    }, 600);
+  }, [section]);
+
   useFrame((state) => {
+
+    const currentSection = Math.floor(data.scroll.current * data.pages);
+
+    if (currentSection != section) {
+      setSection(currentSection);
+    }
+
     state.camera.position.x = cameraPositionX.get();
     state.camera.lookAt(cameraLookAtX.get(), 0, 0);
 
@@ -79,7 +99,7 @@ export const Experience = (props) => {
       rotation={[-3.141592653589793, 1.1805528346628866, 3.141592653589793]}
     >
       <Avatar 
-        animation={section === 0 ? "Typing" : "StandingIdle"} 
+        animation={characterAnimation} 
       />
     </motion.group>
     <ambientLight intensity={1} />
