@@ -8,6 +8,7 @@ import { animate, useMotionValue } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import * as THREE from 'three';
 import { framerMotionConfig } from "../config";
+import { Projects } from "./Projects";
 
 
 export const Experience = (props) => {
@@ -116,10 +117,6 @@ export const Experience = (props) => {
           
         </group>
       </motion.group>
-
-
-      <Environment preset="sunset" />
-
       
       <motion.group
         animate={{
@@ -128,10 +125,10 @@ export const Experience = (props) => {
         }}
         position={[0, -1.5, -10]}
       >
-        <directionalLight position={[-5, 3, 5]} intensity={0.4} />
-        <ContactShadows opacity={0.42} scale={10} blur={1} far={10} resolution={256} color="#000000" />
-        
+        <directionalLight position={[-5, 3, 5]} intensity={0.4} />        
       </motion.group>
+
+      <Projects />
     </>
   );
 };
