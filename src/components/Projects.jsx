@@ -1,6 +1,9 @@
 import { Image, Text } from "@react-three/drei";
-import { useThree } from "@react-three/fiber";
+import { useFrame, useThree } from "@react-three/fiber";
+import { animate, useMotionValue } from "framer-motion";
 import { motion } from "framer-motion-3d";
+import { atom, useAtom } from "jotai";
+import { useEffect, useRef } from "react";
 
 export const projects = [
     {
@@ -40,11 +43,22 @@ export const projects = [
 
 const Project = (props) => {
 
-    const { project } = props;
+    const { project, highlighted } = props;
+
+    const background = useRef();
+    const backgroundOpacity = useMotionValue(0.4);
+
+    useEffect(() => {
+        animate(backgroundOpacity, highlighted ? 0.7 : 0.4);
+    }, [highlighted]);
+
+    useFrame(() => {
+        background.current.material.opacity = backgroundOpacity.get();
+    });
 
     return(
         <group {...props}>
-            <mesh position-z={-0.001} onClick={() => window.open(project.github, "_blank")}>
+            <mesh position-z={-0.001} onClick={() => window.open(project.github, "_blank")} ref={background}>
                 <planeGeometry args={[2.2, 2]} />
                 <meshBasicMaterial color="black" transparent opacity={0.4} />
             </mesh>
@@ -59,16 +73,29 @@ const Project = (props) => {
     );
 };
 
+export const currentProjectAtom = atom(Math.floor(projects.length / 2));
+
 export const Projects = () => {
 
     const { viewport } = useThree();
+    const [currentProject] = useAtom(currentProjectAtom);
 
     return(
         <group position-y={-viewport.height * 2 + 1}>
             {
                 projects.map((project, index) => (
-                    <motion.group key={"project_" + index} position={[index * 2.5, 0, -3]}>
-                        <Project project={project} /> 
+                    <motion.group 
+                        key={"project_" + index} 
+                        position={[index * 2.5, 0, -3]}
+                        animate={{
+                            x: 0 + (index - currentProject) * 2.5,
+                            y: currentProject === index ? 0 : -0.1,
+                            z: currentProject === index ? -2 : -3,
+                            rotateX: currentProject === index ? 0 : -Math.PI / 3,
+                            rotateZ: currentProject === index ? 0 : -0.1 * Math.PI
+                        }}
+                    >
+                        <Project project={project} highlighted={index === currentProject} /> 
                     </motion.group>
                 ))
             }

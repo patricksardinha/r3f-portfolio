@@ -9,6 +9,7 @@ import { useEffect, useRef, useState } from "react";
 import * as THREE from 'three';
 import { framerMotionConfig } from "../config";
 import { Projects } from "./Projects";
+import { Background } from "./Background";
 
 
 export const Experience = (props) => {
@@ -76,6 +77,7 @@ export const Experience = (props) => {
 
   return (
     <>
+    <Background />
     <motion.group
       animate={"" + section}
       transition={{
