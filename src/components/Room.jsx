@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import * as THREE from 'three';
-import { useGLTF, useTexture } from "@react-three/drei";
+import { useGLTF, useTexture, useVideoTexture } from "@react-three/drei";
 import { motion } from "framer-motion-3d";
 import { animate, useMotionValue } from "framer-motion";
 import { useFrame } from "@react-three/fiber";
@@ -12,6 +12,8 @@ export function Room(props) {
   const texture = useTexture("textures/lightmap.jpg");
   texture.flipY = false;
   texture.encoding = THREE.sRGBEncoding;
+
+  const textureScreen1 = useVideoTexture("textures/template_screen1.mp4");
 
   const textureMaterial = new THREE.MeshStandardMaterial({
     map: texture,
@@ -41,6 +43,18 @@ export function Room(props) {
   return (
     <group {...props} dispose={null}>
       <group name="Scene">
+        <mesh name="Screen1" geometry={nodes.Screen1.geometry} position={[0.377, 1.25, -1.528]} rotation={[-Math.PI, 0, -Math.PI]} >
+          <meshBasicMaterial map={textureScreen1} toneMapped={false}/>
+        </mesh>
+        <mesh name="Screen2" geometry={nodes.Screen2.geometry} position={[0.377, 1.25, -1.528]} rotation={[-Math.PI, 0, -Math.PI]}>
+          <meshBasicMaterial map={textureScreen1} toneMapped={false}/>
+        </mesh>
+        <mesh name="FaceArtWall1" geometry={nodes.FaceArtWall1.geometry} position={[-0.934, 1.685, -1.992]} rotation={[-Math.PI, 0, Math.PI / 2]}>
+          <meshBasicMaterial map={textureScreen1} toneMapped={false}/>
+        </mesh>
+        <mesh name="FaceArtWall2" geometry={nodes.FaceArtWall2.geometry} position={[-0.934, 1.362, -1.992]} rotation={[-Math.PI, 0, Math.PI / 2]}>
+          <meshBasicMaterial map={textureScreen1} toneMapped={false}/>
+        </mesh>
         <group name="GroupBackpack" position={[-1.77, 0.219, -1.073]} rotation={[0, 1.158, 0]}>
           <group name="Backpack" position={[0.48, 0, 0.811]} rotation={[-Math.PI / 2, 0, 1.509]}>
             <mesh name="Backpack_1" geometry={nodes.Backpack_1.geometry} material={textureMaterial} />
@@ -236,18 +250,16 @@ export function Room(props) {
         </group>
         <mesh name="GroupStickyNotes" geometry={nodes.GroupStickyNotes.geometry} material={textureMaterial} position={[1.932, -0.475, -1.343]} rotation={[-0.098, -0.003, 0.027]} />
         <group name="GroupArtWall" position={[-0.934, 1.685, -1.992]} rotation={[-Math.PI, 0, Math.PI / 2]}>
-          <mesh name="Node-Mesh001" geometry={nodes['Node-Mesh001'].geometry} material={textureMaterial} />
-          <mesh name="Node-Mesh001_1" geometry={nodes['Node-Mesh001_1'].geometry} material={textureMaterial} />
-          <mesh name="Node-Mesh001_2" geometry={nodes['Node-Mesh001_2'].geometry} material={textureMaterial} />
-          <mesh name="Node-Mesh001_3" geometry={nodes['Node-Mesh001_3'].geometry} material={textureMaterial} />
-          <mesh name="Node-Mesh001_4" geometry={nodes['Node-Mesh001_4'].geometry} material={textureMaterial} />
+          <mesh name="Node-Mesh001" geometry={nodes['Node-Mesh001'].geometry} material={materials['mat23.006']} />
+          <mesh name="Node-Mesh001_1" geometry={nodes['Node-Mesh001_1'].geometry} material={materials['mat21.009']} />
+          <mesh name="Node-Mesh001_2" geometry={nodes['Node-Mesh001_2'].geometry} material={materials['mat24.002']} />
+          <mesh name="Node-Mesh001_3" geometry={nodes['Node-Mesh001_3'].geometry} material={materials['mat25.001']} />
         </group>
         <group name="GroupArtWall001" position={[-0.934, 1.362, -1.992]} rotation={[-Math.PI, 0, Math.PI / 2]}>
-          <mesh name="Node-Mesh004" geometry={nodes['Node-Mesh004'].geometry} material={textureMaterial} />
-          <mesh name="Node-Mesh004_1" geometry={nodes['Node-Mesh004_1'].geometry} material={textureMaterial} />
-          <mesh name="Node-Mesh004_2" geometry={nodes['Node-Mesh004_2'].geometry} material={textureMaterial} />
-          <mesh name="Node-Mesh004_3" geometry={nodes['Node-Mesh004_3'].geometry} material={textureMaterial} />
-          <mesh name="Node-Mesh004_4" geometry={nodes['Node-Mesh004_4'].geometry} material={textureMaterial} />
+          <mesh name="Node-Mesh004" geometry={nodes['Node-Mesh004'].geometry} material={materials['mat23.007']} />
+          <mesh name="Node-Mesh004_1" geometry={nodes['Node-Mesh004_1'].geometry} material={materials['mat21.010']} />
+          <mesh name="Node-Mesh004_2" geometry={nodes['Node-Mesh004_2'].geometry} material={materials['mat24.003']} />
+          <mesh name="Node-Mesh004_3" geometry={nodes['Node-Mesh004_3'].geometry} material={materials['mat25.002']} />
         </group>
         <group name="GooglepCube51" position={[-0.25, 0.324, -1.532]} rotation={[-1.889, -0.056, -1.4]}>
           <mesh name="GooglepCube51_1" geometry={nodes.GooglepCube51_1.geometry} material={textureMaterial} />
