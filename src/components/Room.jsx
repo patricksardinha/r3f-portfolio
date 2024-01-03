@@ -13,7 +13,8 @@ export function Room(props) {
   texture.flipY = false;
   texture.encoding = THREE.sRGBEncoding;
 
-  const textureScreen1 = useVideoTexture("textures/template_screen1.mp4");
+  const textureScreen1 = useVideoTexture("textures/coding_screen_fixed.mp4");
+  const textureScreen2 = useVideoTexture("textures/coding_screen.mp4");
 
   const textureMaterial = new THREE.MeshStandardMaterial({
     map: texture,
@@ -46,10 +47,10 @@ export function Room(props) {
         <mesh name="Screen1" geometry={nodes.Screen1.geometry} position={[0.377, 1.25, -1.528]} rotation={[-Math.PI, 0, -Math.PI]} >
           <meshBasicMaterial map={textureScreen1} toneMapped={false}/>
         </mesh>
-        <mesh name="Screen2" geometry={nodes.Screen2.geometry} position={[0.377, 1.25, -1.528]} rotation={[-Math.PI, 0, -Math.PI]}>
-          <meshBasicMaterial map={textureScreen1} toneMapped={false}/>
+        <mesh name="Screen2" geometry={nodes.Screen2.geometry} position={[0.377, 1.25, -1.528]} rotation={[-Math.PI, 0, -Math.PI]} >
+          <meshBasicMaterial map={textureScreen2} toneMapped={false}/>
         </mesh>
-        <mesh name="FaceArtWall1" geometry={nodes.FaceArtWall1.geometry} position={[-0.934, 1.685, -1.992]} rotation={[-Math.PI, 0, Math.PI / 2]}>
+        <mesh name="FaceArtWall1" geometry={nodes.FaceArtWall1.geometry} position={[-0.934, 1.685, -1.992]} rotation={[-Math.PI, 0, Math.PI / 2]} >
           <meshBasicMaterial map={textureScreen1} toneMapped={false}/>
         </mesh>
         <mesh name="FaceArtWall2" geometry={nodes.FaceArtWall2.geometry} position={[-0.934, 1.362, -1.992]} rotation={[-Math.PI, 0, Math.PI / 2]}>
@@ -140,9 +141,9 @@ export function Room(props) {
           <mesh name="Books001" geometry={nodes.Books001.geometry} material={textureMaterial} position={[-0.128, -0.074, -0.257]} scale={138.225} />
         </group>
         <group name="GroupDualScreen" position={[0.377, 1.25, -1.528]} rotation={[-Math.PI, 0, -Math.PI]}>
-          <mesh name="mesh329542522001" geometry={nodes.mesh329542522001.geometry} material={textureMaterial} />
-          <mesh name="mesh329542522001_1" geometry={nodes.mesh329542522001_1.geometry} material={textureMaterial} />
-          <mesh name="mesh329542522001_2" geometry={nodes.mesh329542522001_2.geometry} material={textureMaterial} />
+          <mesh name="mesh329542522001" geometry={nodes.mesh329542522001.geometry} material={materials['mat22.001']} />
+          <mesh name="mesh329542522001_1" geometry={nodes.mesh329542522001_1.geometry} material={materials['mat23.001']} />
+          <mesh name="mesh329542522001_2" geometry={nodes.mesh329542522001_2.geometry} material={materials['mat21.002']} />
         </group>
         <group name="GroupWhiteBoard" position={[2.216, 0.934, -2.006]}>
           <mesh name="White_board_Cube045_1" geometry={nodes.White_board_Cube045_1.geometry} material={textureMaterial} />
