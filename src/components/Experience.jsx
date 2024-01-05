@@ -77,47 +77,45 @@ export const Experience = (props) => {
 
   return (
     <>
-    <Background />
-    <motion.group
-      animate={"" + section}
-      transition={{
-        duration: 0.6
-      }}
-      variants={{
-        0: {
-          scaleX: 0.9,
-          scaleY: 0.9,
-          scaleZ: 0.9
-        },
-        1: {
-          y: -viewport.height + 0.5,
-          x: 0,
-          z: 7,
-          rotateX: 0,
-          rotateY: 0,
-          rotateZ: 0
-        }
-      }}
-      position={[2.2236729988970056, 0, 3.1347915452371358]}
-      rotation={[-3.141592653589793, 1.1805528346628866, 3.141592653589793]}
-    >
-      <Avatar 
-        animation={characterAnimation} 
-      />
-    </motion.group>
-    <ambientLight intensity={1} />
+      <Background />
+      <motion.group
+        animate={"" + section}
+        transition={{
+          duration: 0.6
+        }}
+        variants={{
+          0: {
+            scaleX: 0.9,
+            scaleY: 0.9,
+            scaleZ: 0.9
+          },
+          1: {
+            y: -viewport.height + 0.5,
+            x: 0,
+            z: 7,
+            rotateX: 0,
+            rotateY: 0,
+            rotateZ: 0
+          }
+        }}
+        position={[2.2236729988970056, 0, 3.1347915452371358]}
+        rotation={[-3.141592653589793, 1.1805528346628866, 3.141592653589793]}
+      >
+        <Avatar 
+          animation={characterAnimation} 
+        />
+      </motion.group>
+      <ambientLight intensity={1} />
       <motion.group 
-        position={[1.5, 2, 3]} 
+        position={[1.5, -8, 3]} 
         scale={[0.9, 0.9, 0.9]} 
         rotation-y={-Math.PI / 2.7}
         animate={{
-          y: section === 0 ? 0 : -1
+          y: section === 1 ? -8 : -1
         }}
       >
         <Room section={section}/>
-        <group ref={characterContainerAboutRef} name="CharacterSpot" position={[0.456, 0, -0.679]} rotation={[-Math.PI, 0.017, -Math.PI]} scale={1.035}>
-          
-        </group>
+        <group ref={characterContainerAboutRef} name="CharacterSpot" position={[0.456, 0, -0.679]} rotation={[-Math.PI, 0.017, -Math.PI]} scale={1.035}></group>
       </motion.group>
       
       <motion.group

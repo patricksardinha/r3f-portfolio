@@ -20,20 +20,21 @@ export function Room(props) {
     map: texture,
     transparent: true,
     opacity: 1
-  })
+  });
 
   const textureGlassMaterial = new THREE.MeshStandardMaterial({
     map: texture,
     transparent: true,
     opacity: 0.3
-  })
+  });
 
   const textureOpacity = useMotionValue(0);
   const glassTextureOpacity = useMotionValue(0);
 
+  console.log("room.section", section);
   useEffect(() => {
-    animate(textureOpacity, section === 0 ? 1 : 0);
-    animate(glassTextureOpacity, section === 0 ? 0.42 : 0);
+    animate(textureOpacity, section === 1 ? 1 : 0);
+    animate(glassTextureOpacity, section === 1 ? 0.42 : 0);
   }, [section]);
 
   useFrame(() => {
@@ -141,9 +142,9 @@ export function Room(props) {
           <mesh name="Books001" geometry={nodes.Books001.geometry} material={textureMaterial} position={[-0.128, -0.074, -0.257]} scale={138.225} />
         </group>
         <group name="GroupDualScreen" position={[0.377, 1.25, -1.528]} rotation={[-Math.PI, 0, -Math.PI]}>
-          <mesh name="mesh329542522001" geometry={nodes.mesh329542522001.geometry} material={materials['mat22.001']} />
-          <mesh name="mesh329542522001_1" geometry={nodes.mesh329542522001_1.geometry} material={materials['mat23.001']} />
-          <mesh name="mesh329542522001_2" geometry={nodes.mesh329542522001_2.geometry} material={materials['mat21.002']} />
+          <mesh name="mesh329542522001" geometry={nodes.mesh329542522001.geometry} material={textureMaterial} />
+          <mesh name="mesh329542522001_1" geometry={nodes.mesh329542522001_1.geometry} material={textureMaterial} />
+          <mesh name="mesh329542522001_2" geometry={nodes.mesh329542522001_2.geometry} material={textureMaterial} />
         </group>
         <group name="GroupWhiteBoard" position={[2.216, 0.934, -2.006]}>
           <mesh name="White_board_Cube045_1" geometry={nodes.White_board_Cube045_1.geometry} material={textureMaterial} />
@@ -251,16 +252,16 @@ export function Room(props) {
         </group>
         <mesh name="GroupStickyNotes" geometry={nodes.GroupStickyNotes.geometry} material={textureMaterial} position={[1.932, -0.475, -1.343]} rotation={[-0.098, -0.003, 0.027]} />
         <group name="GroupArtWall" position={[-0.934, 1.685, -1.992]} rotation={[-Math.PI, 0, Math.PI / 2]}>
-          <mesh name="Node-Mesh001" geometry={nodes['Node-Mesh001'].geometry} material={materials['mat23.006']} />
-          <mesh name="Node-Mesh001_1" geometry={nodes['Node-Mesh001_1'].geometry} material={materials['mat21.009']} />
-          <mesh name="Node-Mesh001_2" geometry={nodes['Node-Mesh001_2'].geometry} material={materials['mat24.002']} />
-          <mesh name="Node-Mesh001_3" geometry={nodes['Node-Mesh001_3'].geometry} material={materials['mat25.001']} />
+          <mesh name="Node-Mesh001" geometry={nodes['Node-Mesh001'].geometry} material={textureMaterial} />
+          <mesh name="Node-Mesh001_1" geometry={nodes['Node-Mesh001_1'].geometry} material={textureMaterial} />
+          <mesh name="Node-Mesh001_2" geometry={nodes['Node-Mesh001_2'].geometry} material={textureMaterial} />
+          <mesh name="Node-Mesh001_3" geometry={nodes['Node-Mesh001_3'].geometry} material={textureMaterial} />
         </group>
         <group name="GroupArtWall001" position={[-0.934, 1.362, -1.992]} rotation={[-Math.PI, 0, Math.PI / 2]}>
-          <mesh name="Node-Mesh004" geometry={nodes['Node-Mesh004'].geometry} material={materials['mat23.007']} />
-          <mesh name="Node-Mesh004_1" geometry={nodes['Node-Mesh004_1'].geometry} material={materials['mat21.010']} />
-          <mesh name="Node-Mesh004_2" geometry={nodes['Node-Mesh004_2'].geometry} material={materials['mat24.003']} />
-          <mesh name="Node-Mesh004_3" geometry={nodes['Node-Mesh004_3'].geometry} material={materials['mat25.002']} />
+          <mesh name="Node-Mesh004" geometry={nodes['Node-Mesh004'].geometry} material={textureMaterial} />
+          <mesh name="Node-Mesh004_1" geometry={nodes['Node-Mesh004_1'].geometry} material={textureMaterial} />
+          <mesh name="Node-Mesh004_2" geometry={nodes['Node-Mesh004_2'].geometry} material={textureMaterial} />
+          <mesh name="Node-Mesh004_3" geometry={nodes['Node-Mesh004_3'].geometry} material={textureMaterial} />
         </group>
         <group name="GooglepCube51" position={[-0.25, 0.324, -1.532]} rotation={[-1.889, -0.056, -1.4]}>
           <mesh name="GooglepCube51_1" geometry={nodes.GooglepCube51_1.geometry} material={textureMaterial} />
