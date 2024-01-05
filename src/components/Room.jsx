@@ -45,18 +45,22 @@ export function Room(props) {
   return (
     <group {...props} dispose={null}>
       <group name="Scene">
-        <mesh name="Screen1" geometry={nodes.Screen1.geometry} position={[0.377, 1.25, -1.528]} rotation={[-Math.PI, 0, -Math.PI]} >
-          <meshBasicMaterial map={textureScreen1} toneMapped={false}/>
-        </mesh>
-        <mesh name="Screen2" geometry={nodes.Screen2.geometry} position={[0.377, 1.25, -1.528]} rotation={[-Math.PI, 0, -Math.PI]} >
-          <meshBasicMaterial map={textureScreen2} toneMapped={false}/>
-        </mesh>
-        <mesh name="FaceArtWall1" geometry={nodes.FaceArtWall1.geometry} position={[-0.934, 1.685, -1.992]} rotation={[-Math.PI, 0, Math.PI / 2]} >
-          <meshBasicMaterial map={textureScreen1} toneMapped={false}/>
-        </mesh>
-        <mesh name="FaceArtWall2" geometry={nodes.FaceArtWall2.geometry} position={[-0.934, 1.362, -1.992]} rotation={[-Math.PI, 0, Math.PI / 2]}>
-          <meshBasicMaterial map={textureScreen1} toneMapped={false}/>
-        </mesh>
+        {section === 1 &&  
+          <>
+            <mesh name="Screen1" geometry={nodes.Screen1.geometry} position={[0.377, 1.25, -1.528]} rotation={[-Math.PI, 0, -Math.PI]} >
+              <meshBasicMaterial map={textureScreen1} toneMapped={false}/>
+            </mesh>
+            <mesh name="Screen2" geometry={nodes.Screen2.geometry} position={[0.377, 1.25, -1.528]} rotation={[-Math.PI, 0, -Math.PI]} >
+              <meshBasicMaterial map={textureScreen2} toneMapped={false}/>
+            </mesh>
+            <mesh name="FaceArtWall1" geometry={nodes.FaceArtWall1.geometry} position={[-0.934, 1.685, -1.992]} rotation={[-Math.PI, 0, Math.PI / 2]} >
+              <meshBasicMaterial map={textureScreen1} toneMapped={false}/>
+            </mesh>
+            <mesh name="FaceArtWall2" geometry={nodes.FaceArtWall2.geometry} position={[-0.934, 1.362, -1.992]} rotation={[-Math.PI, 0, Math.PI / 2]}>
+              <meshBasicMaterial map={textureScreen1} toneMapped={false}/>
+            </mesh>
+          </>
+        }
         <group name="GroupBackpack" position={[-1.77, 0.219, -1.073]} rotation={[0, 1.158, 0]}>
           <group name="Backpack" position={[0.48, 0, 0.811]} rotation={[-Math.PI / 2, 0, 1.509]}>
             <mesh name="Backpack_1" geometry={nodes.Backpack_1.geometry} material={textureMaterial} />

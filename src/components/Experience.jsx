@@ -41,12 +41,12 @@ export const Experience = (props) => {
 
   const characterContainerAboutRef = useRef();
 
-  const [characterAnimation, setCharacterAnimation] = useState("Typing");
+  const [characterAnimation, setCharacterAnimation] = useState("StandingIdle");
 
   useEffect(() => {
     setCharacterAnimation("FallingIdle");
     setTimeout(() => {
-      setCharacterAnimation(section === 0 ? "Typing" : "StandingIdle");
+      setCharacterAnimation(section === 1 ? "Typing" : "StandingIdle");
     }, 600);
   }, [section]);
 
@@ -85,17 +85,18 @@ export const Experience = (props) => {
         }}
         variants={{
           0: {
-            scaleX: 0.9,
-            scaleY: 0.9,
-            scaleZ: 0.9
-          },
-          1: {
-            y: -viewport.height + 0.5,
-            x: 0,
-            z: 7,
+            
             rotateX: 0,
             rotateY: 0,
             rotateZ: 0
+          },
+          1: {
+            y: -viewport.height + 0.075,
+            x: 1,
+            z: 3.075,
+            scaleX: 0.9,
+            scaleY: 0.9,
+            scaleZ: 0.9
           }
         }}
         position={[2.2236729988970056, 0, 3.1347915452371358]}
@@ -107,9 +108,9 @@ export const Experience = (props) => {
       </motion.group>
       <ambientLight intensity={1} />
       <motion.group 
-        position={[1.5, -8, 3]} 
+        position={[0.25, -8, 3]}
         scale={[0.9, 0.9, 0.9]} 
-        rotation-y={-Math.PI / 2.7}
+        rotation-y={-Math.PI / 2.8}
         animate={{
           y: section === 1 ? -8 : -1
         }}
