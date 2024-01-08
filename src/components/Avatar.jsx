@@ -20,18 +20,20 @@ export function Avatar(props) {
 
   const { nodes, materials } = useGLTF("models/character.glb");
 
+  const { animations: landingAnimation } = useFBX("animations/Landing.fbx");
   const { animations: typingAnimation } = useFBX("animations/Typing.fbx");
   const { animations: fallingIdleAnimation } = useFBX("animations/Falling_Idle.fbx");
   const { animations: thorAnimation } = useFBX("animations/Thor.fbx");
   const { animations: standingIdleAnimation } = useFBX("animations/Standing_Idle.fbx");
 
-  console.log(typingAnimation);
+  console.log("--->", landingAnimation);
+  landingAnimation[0].name = "Landing";
   typingAnimation[0].name = "Typing";
   fallingIdleAnimation[0].name = "FallingIdle";
   thorAnimation[0].name = "Thor";
   standingIdleAnimation[0].name = "StandingIdle";
 
-  const { actions } = useAnimations([typingAnimation[0], fallingIdleAnimation[0], thorAnimation[0], standingIdleAnimation[0]], group);
+  const { actions } = useAnimations([landingAnimation[0], typingAnimation[0], fallingIdleAnimation[0], thorAnimation[0], standingIdleAnimation[0]], group);
 
   useFrame ((state) => {
     if (headfollow) {
@@ -44,6 +46,10 @@ export function Avatar(props) {
   });
 
   useEffect(() => {
+    if (animation === "Landing") {
+      console.log("??", actions[animation]);
+      actions[animation].setLoop(THREE.LoopOnce);
+    }
     actions[animation].reset().fadeIn(0.5).play();
     return () => {
       actions[animation].reset().fadeOut(0.5);

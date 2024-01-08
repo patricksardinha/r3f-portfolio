@@ -44,10 +44,20 @@ export const Experience = (props) => {
   const [characterAnimation, setCharacterAnimation] = useState("StandingIdle");
 
   useEffect(() => {
-    setCharacterAnimation("FallingIdle");
-    setTimeout(() => {
-      setCharacterAnimation(section === 1 ? "Typing" : "StandingIdle");
-    }, 600);
+      if (section === 0) {
+        setCharacterAnimation("Landing");
+        setTimeout(() => {
+          setCharacterAnimation("StandingIdle");
+        }, 2000);
+        // then play random animations    
+      } else if (section === 1) {
+        setCharacterAnimation("FallingIdle");
+        setTimeout(() => {
+          setCharacterAnimation("Typing");
+        }, 600);
+      } else {
+        setCharacterAnimation("StandingIdle");
+      }
   }, [section]);
 
   useFrame((state) => {
@@ -85,7 +95,9 @@ export const Experience = (props) => {
         }}
         variants={{
           0: {
-            
+            x: 0,
+            y: 0,
+            z: 2,
             rotateX: 0,
             rotateY: 0,
             rotateZ: 0
