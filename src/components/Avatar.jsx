@@ -46,13 +46,20 @@ export function Avatar(props) {
   });
 
   useEffect(() => {
+    console.log("ANIM: ", animation, actions[animation]);
     if (animation === "Landing") {
-      console.log("??", actions[animation]);
-      actions[animation].setLoop(THREE.LoopOnce);
+      actions[animation].clampWhenFinished = true;
+      //actions[animation].setLoop(THREE.LoopOnce);
+      actions[animation].reset().fadeIn(0.5).play();
+    } else {
+      actions[animation].reset().fadeIn(0.5).play();
     }
-    actions[animation].reset().fadeIn(0.5).play();
     return () => {
-      actions[animation].reset().fadeOut(0.5);
+      if (animation === "Landing") {
+        actions[animation].fadeOut(1);
+      } else {
+        actions[animation].reset().fadeOut(0.5);
+      }
     }
   }, [animation]);
 

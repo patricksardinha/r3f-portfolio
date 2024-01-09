@@ -48,7 +48,7 @@ export const Experience = (props) => {
         setCharacterAnimation("Landing");
         setTimeout(() => {
           setCharacterAnimation("StandingIdle");
-        }, 2000);
+        }, 1000);
         // then play random animations    
       } else if (section === 1) {
         setCharacterAnimation("FallingIdle");
@@ -95,11 +95,11 @@ export const Experience = (props) => {
         }}
         variants={{
           0: {
-            x: 0,
-            y: 0,
-            z: 2,
+            x: 1,
+            y: 0.75,
+            z: 5.5,
             rotateX: 0,
-            rotateY: 0,
+            rotateY: -Math.PI / 6,
             rotateZ: 0
           },
           1: {
