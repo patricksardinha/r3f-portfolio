@@ -10,6 +10,7 @@ import * as THREE from 'three';
 import { framerMotionConfig } from "../config";
 import { Projects } from "./Projects";
 import { Background } from "./Background";
+import { Buildings } from "./Buildings";
 
 
 export const Experience = (props) => {
@@ -142,6 +143,17 @@ export const Experience = (props) => {
       </motion.group>
 
       <Projects />
+
+      <ambientLight intensity={1} />
+      <motion.group 
+        position={[-3, -50, 3]}
+        scale={[0.45, 0.45, 0.45]} 
+        animate={{
+          y: section === 4 ? -29 : section === 5 ? -23 : -34
+        }}
+      >
+        <Buildings section={section}/>
+      </motion.group>
     </>
   );
 };
