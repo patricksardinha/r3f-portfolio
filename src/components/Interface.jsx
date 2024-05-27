@@ -62,19 +62,26 @@ const AboutSection = () => {
     return (
         <Section>
             <div className="w-1/3">
-                <h3 className="text-3xl font-extrabold leading-snug">Learn more about me.</h3>
+                <h3 className="text-3xl font-extrabold leading-snug">How It Works?</h3>
                 <p className="text-lg text-gray-600 mt-4">
-                    In high school I did a Scientific Baccalaureate with the specialty "Computer Science and Digital Sciences" thanks to which today I have a real 
-                    interest in computer development. <br/>
+                    Several steps are necessary to put in place to carry out this project.
+                    <br/>
 
-                    I thus continued my studies by doing a Bachelor and a Master in Computer Science at the University of Geneva. It was there that I discovered and learned 
-                    a lot about all areas of IT through specific courses. <br/>
+                    Step 1: Creation of the Avatar.
+                    <br/>
 
-                    After university, to specialize in a field, I did online Full Stack Web development formation provided by the Hong Kong University of Science & Technology. 
-                    Being also passionate about real-time applications and 3D modeling, I decided after my formation to follow an Unity and an Unreal Engine formation but also
-                    to learn how to work with Blender to use and create 3D assets. <br/>
+                    Step 2: Character Amination.
+                    <br/>
 
-                    Now, my goal is to improve and put my knowledge into practice through many projects.
+                    Step 3: Creation of the Room.
+                    <br/>
+
+                    Step 4: Integration of elements on the page.
+                    <br/>
+
+                    Step 5: Optimizing the rendering.
+                    <br/>
+
                 </p>
             </div>
         </Section>
@@ -102,7 +109,7 @@ const ProjectsSection = () => {
             >
               ← Previous
             </button>
-            <h2 className="text-5xl font-bold">Projects</h2>
+            <h2 className="text-5xl font-bold">Steps Explications</h2>
             <button
               className="hover:text-indigo-600 transition-colors"
               onClick={nextProject}
@@ -138,8 +145,6 @@ export const Interface = () => {
             <HomeSection/>
             <AboutSection/>
             <ProjectsSection/>
-            <ExperiencesSection/>
-            <ContactSection/>
         </div>
     );
 };

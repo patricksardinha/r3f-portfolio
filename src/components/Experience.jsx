@@ -144,16 +144,7 @@ export const Experience = (props) => {
 
       <Projects />
 
-      <ambientLight intensity={1} />
-      <motion.group 
-        position={[-3, -50, 3]}
-        scale={[0.45, 0.45, 0.45]} 
-        animate={{
-          y: section === 4 ? -29 : section === 5 ? -23 : -34
-        }}
-      >
-        <Buildings section={section}/>
-      </motion.group>
+
     </>
   );
 };
